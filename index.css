@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.Element{
+    color: black;
+    width: 60px;
+    height: 50px;
+}
+.Element sup {
+    vertical-align: super;
+    font-size: 0.5em;
+}
+
+#PeriodicTable tr{
+    height: 50px;
+}
+#elements {
+    position: fixed;
+    top: 2.5%;
+    left: 2.5%;
+}
+#elements td{
+    background-color: aquamarine;
+    width: 125px;
+    font-size: 1.1em;
+}
