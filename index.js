@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //import App from './App';
 import './index.css';
-
-
 const elementData = require("./data.json");
 const elements =
     ["H","He"
@@ -22,9 +20,9 @@ const elements =
 
 function Element  (props) {
 return(
-    <button style={{'backgroundColor':props.color}} className="Element" onClick={props.onClick}>
-        <sup>  {props.element+1} </sup>  {elements[props.element]}
-      </button>
+    <button style={{'backgroundColor':props.color } } className="Element" onClick={props.onClick}>
+        <p id="AtomicNumber">{props.element+1}</p>   <h1>  {elements[props.element]} </h1>  {elementData.elements[props.element][2]}
+        </button>
     )
 }
 function PerodicTable(props){
@@ -127,15 +125,20 @@ function PerodicTable(props){
             }
         }
         table.push( <tr key={8}></tr>, <tr key={9}>{lant}</tr> , <tr key={10}>{acc}</tr> );
-    return  <table><tbody id="PeriodicTable">{table}</tbody></table>
+    return  <table className="PeriodicTable" ><tbody id="PeriodicTable">{table}</tbody></table>
         }
 
 function elementInfo(props){
-        const fields = ["atomicNumber","symbol","name","atomicMass", "cpkHexColor", "electronicConfiguration", "electronegativity", "atomicRadius", "ionRadius", "vanDelWaalsRadius", "ionizationEnergy", "electronAffinity", "oxidationStates", "standardState", "bondingType", "meltingPoint", "boilingPoint","density", "groupBlock", "yearDiscovered"];
+        const fields = ["AtomicNumber","Symbol","Name","AtomicMass", "CPK HexColor", "Electronic Configuration", "Electronegativity", "Atomic radius", "Ion radius", "Van-Der-Waals radius", "IonizationEnergy", "ElectronAffinity", "Oxidation states", "Standard state", "Bonding type", "Melting point", "Boiling point","Density", "Group block", "Year Discovered"];
+
         let r = [];
         for(let i=0;i<fields.length;i++){
             r.push( <tr key={i}><td> {fields[i]} </td><td align="right">{props[i]}</td></tr> );
-        }
+          }
+        r.push( <tr key={fields.length}><td> {"Wikipedia"} </td><td align="right"><a href={"https://en.wikipedia.org/wiki/"+props[2]} target='_blank'> {props[2]} </a> </td></tr> );
+
+
+
     return <table><tbody id="elements"> {r} </tbody></table>
 }
 
@@ -143,10 +146,13 @@ function getElementInfo(query,cb){
     return elementData.elements[query];
 }
 
+
+
+
 function ColorChooser(props){
     return  <select onChange={props.onChange} >
         <option value={0}>Groups</option>
-        <option value={1}>cpk Colors</option>
+        <option value={1}>CPK colors</option>
         <option value={2}>Electronegativity</option>
         <option value={3}>Block</option>
         <option value={4}>None</option>
@@ -166,11 +172,11 @@ class Controller extends React.Component{
         }
     }
     render(){
-        let perTable = <div id="clickMe"  onClick={this.handleClick} > {PerodicTable( {handleClick:this.elementClick, wide:this.state.wide, colorScheme:this.state.colorScheme} )} </div>;
+        let perTable = <div onClick={this.handleClick} > {PerodicTable( {handleClick:this.elementClick, wide:this.state.wide, colorScheme:this.state.colorScheme} )} </div>;
 
         let elInfo='';
         if (this.state.selected){
-            elInfo= <div> {elementInfo(this.state.element)} </div>;
+            elInfo=  <div>{elementInfo(this.state.element)} </div>;
         }
         return (<div>
                 {perTable}

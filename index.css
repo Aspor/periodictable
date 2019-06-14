@@ -6,16 +6,38 @@ body {
 
 .Element{
     color: black;
-    width: 60px;
-    height: 50px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 0.7vw;
+    margin: 0 0 0 0
+}
+.Element h1{
+font-size: 2em;
+margin-left: 0px;
+margin-block-start: 0.1em;
+margin-block-end: 0.1em;
+font-weight: bold;
 }
 .Element sup {
+    align-content: flex-start;
     vertical-align: super;
     font-size: 0.5em;
 }
 
-#PeriodicTable tr{
-    height: 50px;
+#AtomicNumber{
+  text-align: left;
+  position: relative;
+  left: -5%;
+  margin: 0 0 0 0
+}
+
+.PeriodicTable {
+  width: 100vw;
+  height: 90vh;
+  border-spacing: 0;
+  margin: 0 0 0 0;
+
 }
 #elements {
     position: fixed;
@@ -24,6 +46,10 @@ body {
 }
 #elements td{
     background-color: aquamarine;
-    width: 125px;
+    width: 15vw;
     font-size: 1.1em;
+    margin-right: 3vw;
+    margin-left: 3vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
 }
